@@ -10,6 +10,7 @@ public class BreadAndBakery {
     private Long Id;
     @Column
     private String Name;
+    private a;
     @Column
     private String unitPrice;
     @Column
