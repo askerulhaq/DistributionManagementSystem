@@ -1,4 +1,4 @@
 package com.example.DistributionManagementSystem.controller;
 
-public class InvoiceCont {
+public class StockController {
 }

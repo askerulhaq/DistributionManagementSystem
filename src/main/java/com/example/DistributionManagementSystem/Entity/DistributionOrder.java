@@ -1,83 +1,38 @@
 package com.example.DistributionManagementSystem.Entity;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.util.List;
 
 @Entity
+@Table
+@Data
 public class DistributionOrder {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String orderId;
-    @Column
+    @Column(name = "order_id")
+    private Long orderId;
+    @Column(name = "generation_date")
     private String generationDate;
-    @Column
+    @Column(name = "product-name")
     private String productName;
-    @Column
-    private Long quantity;
-    @Column
+    @Column(name = "Product_description")
+    private String productDescription;
+    @Column(name = "order_quantity")
+    private Long orderQuantity;
+    @Column(name = "delivery_date")
     private String deliveryDate;
-    @Column
+    @Column(name = "order_amount")
     private Long orderAmount;
-    @OneToMany
-    @JoinColumn(name = "product_id")
-    private List<Product> products;
-    @JoinColumn(name = "vendor_Id")
-    private Retailer retailer;
+   @ManyToOne
+   @JoinColumn(name = "product_id")
+   private Product product;
+   @OneToOne
+   @JoinColumn(name = "retailer_id")
+   private Retailer retailer;
+    @OneToOne(mappedBy = "distributionOrder")
+    private Invoice invoice;
 
-    public String getOrderId() {
-        return orderId;
-    }
 
-    public void setOrderId(String orderId) {
-        this.orderId = orderId;
-    }
-
-    public String getOrderDate() {
-        return generationDate;
-    }
-
-    public void setOrderDate(String orderDate) {
-        this.generationDate = orderDate;
-    }
-
-    public String getDeliveryDate() {
-        return deliveryDate;
-    }
-
-    public void setDeliveryDate(String deliveryDate) {
-        this.deliveryDate = deliveryDate;
-    }
-
-    public Long getOrderAmount() {
-        return orderAmount;
-    }
-
-    public void setOrderAmount(Long orderAmount) {
-        this.orderAmount = orderAmount;
-    }
-
-    public String getGenerationDate() {
-        return generationDate;
-    }
-
-    public void setGenerationDate(String generationDate) {
-        this.generationDate = generationDate;
-    }
-
-    public String getProductName() {
-        return productName;
-    }
-
-    public void setProductName(String productName) {
-        this.productName = productName;
-    }
-
-    public Long getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(Long quantity) {
-        this.quantity = quantity;
-    }
 }

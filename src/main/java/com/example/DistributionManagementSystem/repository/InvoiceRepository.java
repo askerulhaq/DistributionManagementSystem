@@ -4,5 +4,5 @@ import com.example.DistributionManagementSystem.Entity.Invoice;
 import jakarta.persistence.Id;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface InvoiceRepo extends JpaRepository<Long, Id> {
+public interface InvoiceRepository extends JpaRepository<Invoice, Long> {
 }

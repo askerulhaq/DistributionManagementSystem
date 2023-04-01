@@ -4,5 +4,5 @@ import com.example.DistributionManagementSystem.Entity.DistributionOrder;
 import jakarta.persistence.Id;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface DistributionOderRepo extends JpaRepository<Long, Id> {
+public interface OrderRepository extends JpaRepository<DistributionOrder, Long> {
 }

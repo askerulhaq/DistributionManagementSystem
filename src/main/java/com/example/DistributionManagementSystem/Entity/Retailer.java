@@ -1,62 +1,25 @@
 package com.example.DistributionManagementSystem.Entity;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 @Entity
 @Table
+@Data
 public class Retailer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column
+    @Column(name = "retailer_Id")
 
     private Long retailerId;
-    @Column
+    @Column(name = "retailer_name")
     private String retailerName;
-    @Column
+    @Column(name = "city")
     private String city;
-    @Column
+    @Column(name = "business_address")
     private String businessAddress;
-    @Column
+    @Column(name = "contact")
     private String contact;
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public Long getRetailerId() {
-        return retailerId;
-    }
-
-    public void setRetailerId(Long retailerId) {
-        this.retailerId = retailerId;
-    }
-
-    public String getRetailerName() {
-        return retailerName;
-    }
-
-    public void setRetailerName(String retailerName) {
-        this.retailerName = retailerName;
-    }
-
-    public String getBusinessAddress() {
-        return businessAddress;
-    }
-
-    public void setBusinessAddress(String businessAddress) {
-        this.businessAddress = businessAddress;
-    }
-
-    public String getVendorContact() {
-        return contact;
-    }
-
-    public void setVendorContact(String vendorContact) {
-        this.contact = contact;
-    }
-
+    @OneToOne(mappedBy = "retailer")
+    private DistributionOrder distributionOrder;
 }
