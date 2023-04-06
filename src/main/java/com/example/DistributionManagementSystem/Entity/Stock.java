@@ -11,12 +11,11 @@ public class Stock {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Stock_id")
     private Long stockId;
-
-    @Column(name = "Available_Quantity")
-    private String  availableQuantity;
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "product_id")
     private Product product;
+    @Column(name = "Available_Quantity")
+    private String  availableQuantity;
 }
 
 

@@ -13,15 +13,15 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "product_Id")
     private Long productId;
-    @Column(name = "Product_name")
+    @Column(name = "product_name")
     private String productName;
-    @Column(name = "Unit_price")
+    @Column(name = "unit_price")
     private int unitPrice;
-    @OneToMany(mappedBy = "product")
-    private List<DistributionOrder> distributionOrderlist;
+    @Column(name = "Product_description")
+    private String productDescription;
     @ManyToOne
     @JoinColumn(name = "category_Id")
     private Category category;
     @OneToOne(mappedBy = "product")
-    private Stock stock;
+    private List<Stock> stock;
 }
