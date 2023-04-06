@@ -3,6 +3,8 @@ package com.example.DistributionManagementSystem.Entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
+
 @Entity
 @Table
 @Data
@@ -22,7 +24,9 @@ public class Invoice {
     private Double deliveryCharges;
     @Column(name = "total_amount")
     private Double totalAmount;
-    @OneToOne
-    @JoinColumn(name = "order_id")
-    private DistributionOrder distributionOrder;
+    @ManyToOne
+    @JoinColumn(name = "retailer_id")
+    private Retailer retailer;
+    @OneToMany(mappedBy = "order_id")
+    private List<DistributionOrder> distributionOrder;
 }

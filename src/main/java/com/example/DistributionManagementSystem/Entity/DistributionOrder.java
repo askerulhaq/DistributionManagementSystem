@@ -3,6 +3,7 @@ package com.example.DistributionManagementSystem.Entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -14,11 +15,7 @@ public class DistributionOrder {
     @Column(name = "order_id")
     private Long orderId;
     @Column(name = "generation_date")
-    private String generationDate;
-    @Column(name = "product-name")
-    private String productName;
-    @Column(name = "Product_description")
-    private String productDescription;
+    private LocalDate generationDate;
     @Column(name = "order_quantity")
     private Long orderQuantity;
     @Column(name = "delivery_date")
@@ -28,11 +25,10 @@ public class DistributionOrder {
    @ManyToOne
    @JoinColumn(name = "product_id")
    private Product product;
-   @OneToOne
+   @ManyToOne
    @JoinColumn(name = "retailer_id")
    private Retailer retailer;
-    @OneToOne(mappedBy = "distributionOrder")
-    private Invoice invoice;
+
 
 
 }

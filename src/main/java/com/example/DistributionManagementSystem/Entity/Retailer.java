@@ -3,6 +3,8 @@ package com.example.DistributionManagementSystem.Entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
+
 @Entity
 @Table
 @Data
@@ -20,6 +22,6 @@ public class Retailer {
     private String businessAddress;
     @Column(name = "contact")
     private String contact;
-    @OneToOne(mappedBy = "retailer")
-    private DistributionOrder distributionOrder;
+    @OneToMany(mappedBy = "retailer")
+    private List<DistributionOrder> distributionOrders;
 }
