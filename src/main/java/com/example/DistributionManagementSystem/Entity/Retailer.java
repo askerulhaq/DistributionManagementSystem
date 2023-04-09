@@ -6,7 +6,7 @@ import lombok.Data;
 import java.util.List;
 
 @Entity
-@Table
+@Table(name="retailer")
 @Data
 public class Retailer {
     @Id
@@ -22,6 +22,5 @@ public class Retailer {
     private String businessAddress;
     @Column(name = "contact")
     private String contact;
-    @OneToMany(mappedBy = "retailer")
-    private List<DistributionOrder> distributionOrders;
+
 }

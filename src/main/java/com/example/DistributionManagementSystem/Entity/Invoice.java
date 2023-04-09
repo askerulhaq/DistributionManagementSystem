@@ -6,7 +6,7 @@ import lombok.Data;
 import java.util.List;
 
 @Entity
-@Table
+@Table(name="invoice")
 @Data
 public class Invoice {
     @Id
@@ -18,15 +18,12 @@ public class Invoice {
     private String namedAt;
     @Column(name = "due_date")
     private String dueDate;
-    @Column(name = "number_of_units")
-    private Long numberOfUnits;
     @Column(name = "delivery_charges")
     private Double deliveryCharges;
     @Column(name = "total_amount")
     private Double totalAmount;
-    @ManyToOne
-    @JoinColumn(name = "retailer_id")
-    private Retailer retailer;
-    @OneToMany(mappedBy = "order_id")
-    private List<DistributionOrder> distributionOrder;
+
+    @OneToOne
+    @JoinColumn(name = "order_id")
+    private DistributionOrder distributionOrder;
 }

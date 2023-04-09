@@ -15,24 +15,22 @@ import java.util.List;
 
 @Service
 public class InvoiceService {
-    private List<Invoice> invoices = new ArrayList<>();
+    @Autowired
+    InvoiceRepository invoiceRepository;
 
-    public void createInvoice(DistributionOrder distributionOrder) {
-        Invoice invoice = new Invoice(distributionOrder);
-        invoices.add(invoice);
+    public InvoiceModel saveInvoice(InvoiceModel invoiceModel) {
+        Invoice invoice=invoiceRepository.save(invoiceModel.dissamble());
+        InvoiceModel invoiceModel1=new InvoiceModel();
+        return invoiceModel1.assamble(invoice);
     }
 
-    public List<Invoice> getAllInvoices() {
-        return invoices;
-    }
-
-    public List<Invoice> getInvoiceForRetailer(Retailer retailer) {
-        List<Invoice> customerInvoices = new ArrayList<>();
-        for (Invoice invoice : invoices) {
-            if (invoice.getDistributionOrder().getRetailer().equals(retailer)) {
-                customerInvoices.add(invoice);
-            }
-        }
-        return customerInvoices;
-    }
+//    public List<Invoice> getInvoiceForRetailer(Retailer retailer) {
+//        List<Invoice> customerInvoices = new ArrayList<>();
+//        for (Invoice invoice : invoices) {
+//            if (invoice.getDistributionOrder().getRetailer().equals(retailer)) {
+//                customerInvoices.add(invoice);
+//            }
+//        }
+//        return customerInvoices;
+//    }
 }

@@ -7,7 +7,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Entity
-@Table
+@Table(name="distributionOrder")
 @Data
 public class DistributionOrder {
     @Id
@@ -17,18 +17,19 @@ public class DistributionOrder {
     @Column(name = "generation_date")
     private LocalDate generationDate;
     @Column(name = "order_quantity")
-    private Long orderQuantity;
+    private int orderQuantity;
     @Column(name = "delivery_date")
     private String deliveryDate;
     @Column(name = "order_amount")
     private Long orderAmount;
-   @ManyToOne
-   @JoinColumn(name = "product_id")
-   private Product product;
-   @ManyToOne
-   @JoinColumn(name = "retailer_id")
+
+    @OneToMany
+   private List<Product> product;
+
+   @OneToOne
    private Retailer retailer;
 
-
+   @Enumerated
+   private OrderStatus status;
 
 }

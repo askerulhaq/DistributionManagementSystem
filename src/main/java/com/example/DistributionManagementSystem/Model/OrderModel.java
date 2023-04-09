@@ -13,12 +13,11 @@ import java.time.LocalDate;
 public class OrderModel {
     private Product product;
     private Retailer retailer;
-    private Long orderQuantity;
+    private int orderQuantity;
     private LocalDate generationDate;
     private String deliveryDate;
     private Long orderAmount;
     public OrderModel(DistributionOrder distributionOrder){
-        this.setProduct(distributionOrder.getProduct());
         this.setRetailer(distributionOrder.getRetailer());
         this.setOrderQuantity(distributionOrder.getOrderQuantity());
         this.setGenerationDate(distributionOrder.getGenerationDate());
@@ -27,13 +26,22 @@ public class OrderModel {
     }
     public DistributionOrder dissamble(){
         DistributionOrder distributionOrder = new DistributionOrder();
-        distributionOrder.setProduct(this.product);
         distributionOrder.setRetailer(this.retailer);
         distributionOrder.setOrderQuantity(this.orderQuantity);
         distributionOrder.setGenerationDate(this.generationDate);
         distributionOrder.setDeliveryDate(this.deliveryDate);
         distributionOrder.setOrderAmount(this.orderAmount);
         return distributionOrder;
+    }
+    public OrderModel assamble(){
+        OrderModel orderModel = new OrderModel();
+        this.setProduct(orderModel.getProduct());
+        this.setRetailer(orderModel.getRetailer());
+        this.setOrderQuantity(orderModel.getOrderQuantity());
+        this.setGenerationDate(orderModel.getGenerationDate());
+        this.setDeliveryDate(orderModel.getDeliveryDate());
+        this.setOrderAmount(orderModel.getOrderAmount());
+        return orderModel;
     }
 
 }

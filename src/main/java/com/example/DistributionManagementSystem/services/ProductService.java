@@ -1,6 +1,7 @@
 package com.example.DistributionManagementSystem.services;
 
 import com.example.DistributionManagementSystem.Entity.Product;
+import com.example.DistributionManagementSystem.Model.ProductModel;
 import jdk.dynalink.linker.LinkerServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.crossstore.ChangeSetPersister;
@@ -13,29 +14,32 @@ public class ProductService {
         @Autowired
         private ProductService productRepository;
 
-        public List<Product> getAllProducts() {
-            return productRepository.findAll();
-        }
+//    public ProductModel saveProduct(ProductModel productModel) {
+//    }
 
-        public Product getProductById(Long id) {
-            return productRepository.findById(id).orElseThrow(() -> new ChangeSetPersister.NotFoundException("Product not found with id " + id));
-        }
+//      //  public List<Product> getAllProducts() {
+//            return productRepository.findAll();
+//        }
 
-        public Product createProduct(Product product) {
-            return productRepository.save(product);
-        }
+//        public Product getProductById(Long id) {
+//            return productRepository.findById(id).orElseThrow(() -> new ChangeSetPersister.NotFoundException("Product not found with id " + id));
+//        }
+//
+//        //public Product createProduct(Product product) {
+//            return productRepository.save(product);
+//        }
 
-        public Product updateProduct(Long id, Product product) {
-            Product existingProduct = getProductById(id);
-            existingProduct.setProductName(product.getProductName());
-            existingProduct.setCategory(product.getCategory());
-            existingProduct.setUnitPrice(product.getUnitPrice());
-            existingProduct.setProductDescription(product.getProductDescription());
-            return productRepository.save(existingProduct);
-        }
-
-        public void deleteProduct(Long id) {
-            Product product = getProductById(id);
-            productRepository.delete(product);
-        }
+//        public Product updateProduct(Long id, Product product) {
+//            Product existingProduct = getProductById(id);
+//            existingProduct.setProductName(product.getProductName());
+//            existingProduct.setCategory(product.getCategory());
+//            existingProduct.setUnitPrice(product.getUnitPrice());
+//            existingProduct.setProductDescription(product.getProductDescription());
+//            return productRepository.save(existingProduct);
+//        }
+//
+//        public void deleteProduct(Long id) {
+//            Product product = getProductById(id);
+//            productRepository.delete(product);
+//        }
 }

@@ -1,13 +1,15 @@
 package com.example.DistributionManagementSystem.Entity;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Data;
 
 import java.util.List;
 
 @Entity
-@Table
+@Table(name="category")
 @Data
+@Builder
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,6 +17,5 @@ public class Category {
     private Long categoryId;
     @Column
     private String CategoryType;
-    @OneToMany(mappedBy = "category")
-    private List<Product> productList;
+
 }

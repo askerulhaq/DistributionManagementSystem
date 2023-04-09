@@ -10,32 +10,36 @@ import lombok.NoArgsConstructor;
 public class InvoiceModel {
     private Long invoiceId;
     private String namedAt;
-
     private String dueDate;
-    private Long numberOfUnits;
     private Double deliveryCharges;
     private Double totalAmount;
-    private OrderModel orderModel;
-    public InvoiceModel(Invoice invoice){
+    public InvoiceModel (Invoice invoice) {
         this.setInvoiceId(invoice.getInvoiceId());
         this.setNamedAt(invoice.getNamedAt());
         this.setDueDate(invoice.getDueDate());
-        this.setNumberOfUnits(invoice.getNumberOfUnits());
         this.setDeliveryCharges(invoice.getDeliveryCharges());
         this.setTotalAmount(invoice.getTotalAmount());
-        this.setOrderModel(new OrderModel(invoice.getDistributionOrder().get()));
+    }
 
     public Invoice dissamble(){
         Invoice invoice = new Invoice();
-        invoice.setInvoiceId(this.invoiceId);
+        OrderModel orderModel1=new OrderModel();
+        invoice.setInvoiceId(invoiceId);
         invoice.setNamedAt(this.namedAt);
         invoice.setDueDate(this.dueDate);
-        invoice.setNumberOfUnits(this.numberOfUnits);
         invoice.setDeliveryCharges(this.deliveryCharges);
         invoice.setTotalAmount(this.totalAmount);
-        invoice.setDistributionOrder(this.orderModel.dissamble());
         return invoice;
-        }
+
+    }
+    public InvoiceModel assamble(Invoice invoice){
+        InvoiceModel invoiceModel = new InvoiceModel();
+        this.setInvoiceId(invoice.getInvoiceId());
+        this.setNamedAt(invoice.getNamedAt());
+        this.setDueDate(invoice.getDueDate());
+        this.setDeliveryCharges(invoice.getDeliveryCharges());
+        this.setTotalAmount(invoice.getTotalAmount());
+        return invoiceModel;
     }
 
 }

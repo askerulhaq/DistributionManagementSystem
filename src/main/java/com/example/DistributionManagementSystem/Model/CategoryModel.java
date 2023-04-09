@@ -19,4 +19,10 @@ public class CategoryModel {
         category.setCategoryType(this.CategoryType);
         return category;
     }
+    public CategoryModel assamble(Category category){
+        CategoryModel categoryModel = new CategoryModel();
+        this.setCategoryId(category.getCategoryId());
+        this.setCategoryType(category.getCategoryType());
+        return categoryModel;
+    }
 }

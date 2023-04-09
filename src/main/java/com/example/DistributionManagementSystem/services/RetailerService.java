@@ -17,24 +17,24 @@ public class RetailerService {
         return retailerRepository.findAll();
     }
 
-    public Retailer getRetailerById(Long id) {
-        return retailerRepository.findById(id).orElseThrow(() -> new ChangeSetPersister.NotFoundException("Retailer not found with id " + id));
-    }
+//    public Retailer getRetailerById(Long id) {
+//        return retailerRepository.findById(id).orElseThrow(() -> new ChangeSetPersister.NotFoundException("Retailer not found with id " + id));
+//    }
 
-    public Retailer createRetailer(Retailer retailer) {
-        return retailerRepository.save(retailer);
-    }
-
-    public Retailer updateRetailer(Long id, Retailer retailer) {
-        Retailer existingRetailer = getRetailerById(id);
-        existingRetailer.setRetailerName(retailer.getRetailerName());
-        existingRetailer.setBusinessAddress(retailer.getBusinessAddress());
-        existingRetailer.setContact(retailer.getContact());
-        return retailerRepository.save(existingRetailer);
-    }
-
-    public void deleteRetailer(Long id) {
-        Retailer retailer = getRetailerById(id);
-        retailerRepository.delete(retailer);
-    }
+//    public Retailer createRetailer(Retailer retailer) {
+//        return retailerRepository.save(retailer);
+//    }
+//
+//    public Retailer updateRetailer(Long id, Retailer retailer) {
+//        Retailer existingRetailer = getRetailerById(id);
+//        existingRetailer.setRetailerName(retailer.getRetailerName());
+//        existingRetailer.setBusinessAddress(retailer.getBusinessAddress());
+//        existingRetailer.setContact(retailer.getContact());
+//        return retailerRepository.save(existingRetailer);
+//    }
+//
+//    public void deleteRetailer(Long id) {
+//        Retailer retailer = getRetailerById(id);
+//        retailerRepository.delete(retailer);
+//    }
 }

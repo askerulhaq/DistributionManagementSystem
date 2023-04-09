@@ -22,6 +22,18 @@ public class Product {
     @ManyToOne
     @JoinColumn(name = "category_Id")
     private Category category;
-    @OneToOne(mappedBy = "product")
-    private List<Stock> stock;
+   @Column(name = "stock")
+    private int stock;
+
+    /*
+
+    {
+        id : 1
+        name:Pepsi
+        price:52
+        desc:ksdjckjs
+        category:ksdjl
+        stock:50
+    }
+     */
 }
